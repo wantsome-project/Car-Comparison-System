@@ -4,8 +4,48 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "f0dcbdc80776ca79d6311b8f92c5a4b5",
+    "content-hash": "d37427bf2953667177bbef1543e0f0c6",
     "packages": [
+        {
+            "name": "amir/laravel-permission",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/amiryousefi/laravel-permission.git",
+                "reference": "e23ccaaa45aedd9598f7735cff82d05a1f6ae8b6"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/amiryousefi/laravel-permission/zipball/e23ccaaa45aedd9598f7735cff82d05a1f6ae8b6",
+                "reference": "e23ccaaa45aedd9598f7735cff82d05a1f6ae8b6",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "laravel": {
+                    "providers": [
+                        "Amir\\Permission\\LaravelPermissionServiceProvider"
+                    ]
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Amir\\Permission\\": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Amir Yousefi",
+                    "email": "amiryousefi.it@gmail.com"
+                }
+            ],
+            "description": "an easy and flexible way for permissions management",
+            "time": "2020-04-22T20:15:42+00:00"
+        },
         {
             "name": "asm89/stack-cors",
             "version": "1.3.0",
