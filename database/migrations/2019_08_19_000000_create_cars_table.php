@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCarsnpmTable extends Migration
+class CreateCarsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -18,7 +18,7 @@ class CreateCarsnpmTable extends Migration
             $table->text('Brand');
             $table->text('Model');
             $table->longText('Motorizare');
-            $table->interger('Locuri');
+            $table->integer('Locuri');
             $table->longText('Consum');
             $table->longText('Transmisie');
             $table->longText('Putere');
