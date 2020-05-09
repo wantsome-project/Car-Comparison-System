@@ -20,3 +20,12 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+
+Route::group([
+    'middleware' => 'auth.role',
+    'prefix' => 'admin',
+    'role' => 'admin',
+],function (){
+    Route::get('galerie', 'GalerieController@index');
+});
