@@ -9,7 +9,7 @@ use Illuminate\Notifications\Notifiable;
 class User extends Authenticatable
 {
     use Notifiable;
-
+    //use App\Notifications\ResetPassword;
     /**
      * The attributes that are mass assignable.
      *
@@ -18,6 +18,10 @@ class User extends Authenticatable
     protected $fillable = [
         'name', 'email', 'password',
     ];
+ /*   public function sendPasswordResetNotification($token)
+    {
+        $this->notify(new ResetPassword($token));
+    }*/
 
     /**
      * The attributes that should be hidden for arrays.

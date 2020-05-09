@@ -22,14 +22,15 @@ class CreateCarsTable extends Migration
             $table->longText('Consum');
             $table->longText('Transmisie');
             $table->longText('Putere');
-            $table->longText('An aparitie');
-            $table->longText('Pret de baza');
+            $table->longText('An_aparitie');
+            $table->longText('Pret_de_baza');
             $table->longText('Combustibil');
             $table->longText('Caroserie');
-            $table->longText('Grad de poluare');
+            $table->longText('Grad_de_poluare');
             $table->longText('Tractiune');
-            $table->longText('Dotari standard');
+            $table->longText('Dotari_standard');
             $table->timestamp('failed_at')->useCurrent();
+            $table->string('iMAGE',255);
         });
     }
 
