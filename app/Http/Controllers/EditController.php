@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-class GalerieController extends Controller
+class EditController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -18,6 +18,6 @@ class GalerieController extends Controller
     }
     public function index()
     {
-        return view('galerie',);
+        return view('edit',);
     }
 }

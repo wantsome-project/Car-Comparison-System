@@ -27,5 +27,5 @@ Route::group([
     'prefix' => 'admin',
     'role' => 'admin',
 ],function (){
-    Route::get('galerie', 'GalerieController@index');
+    Route::get('/edit', 'EditController@index');
 });

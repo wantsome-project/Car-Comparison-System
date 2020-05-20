@@ -14,7 +14,7 @@
                         </div>
                     @endif
 
-                    You are logged in!
+                    Wellcome Admin!<br>
                     <img src="{{url("/Images/download.jpg")}}"/>
                 </div>
             </div>
