@@ -16,7 +16,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
-
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -28,4 +27,6 @@ Route::group([
     'role' => 'admin',
 ],function (){
     Route::get('/edit', 'EditController@index');
+    //Route::resource('/add', 'AddController');
 });
+Route::resource('add','AddController');

@@ -29,8 +29,10 @@ class CreateCarsTable extends Migration
             $table->longText('Grad_de_poluare');
             $table->longText('Tractiune');
             $table->longText('Dotari_standard');
-            $table->timestamp('failed_at')->useCurrent();
             $table->string('iMAGE',255);
+            $table->timestamp('failed_at')->useCurrent();
+            $table->string('updated_at');
+            $table->string('created_at');
         });
     }
 
