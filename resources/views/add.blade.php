@@ -21,7 +21,7 @@
   </div>
   @endif
 
-  <form method="post" action="{{url('add')}}">
+  <form method="post" action="{{url('admin/add')}}">
    {{csrf_field()}}
    <div class="form-group">
     <input type="text" name="Brand" class="form-control" placeholder="Enter Brand" />

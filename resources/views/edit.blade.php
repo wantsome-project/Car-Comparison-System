@@ -1,24 +1,35 @@
-@extends('layouts.app')
+@extends('master')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+<div class="row">
+ <div class="col-md-12">
+  <br />
+  <h3>Edit Car</h3>
+  <br />
+  @if(count($errors) > 0)
 
-                    Wellcome Admin!<br>
-                    <img src="{{url("/Images/download.jpg")}}"/>
-                </div>
-            </div>
-        </div>
-    </div>
+  <div class="alert alert-danger">
+         <ul>
+         @foreach($errors->all() as $error)
+          <li>{{$error}}</li>
+         @endforeach
+         </ul>
+  @endif
+  <form method="post" action="{{action('DataController@update', $id ?? '')}}">
+   {{csrf_field()}}
+   <input type="hidden" name="_method" value="PUT" />
+   <div class="form-group">
+    <input type="text" name="Brand" class="form-control" value="{{$car->Brand}}" placeholder="Enter Brand" />
+   </div>
+   <div class="form-group">
+    <input type="text" name="Model" class="form-control" value="{{$car->Model}}" placeholder="Enter Model" />
+   </div>
+   <div class="form-group">
+    <input type="submit" class="btn btn-primary" value="Edit" />
+   </div>
+  </form>
+ </div>
 </div>
+
 @endsection

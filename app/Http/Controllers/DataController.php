@@ -3,12 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use Illuminate\Http\RedirectResponse;
-use App\Car;
 
-class AddController extends Controller
+use App\Car;
+class DataController extends Controller
 {
-     /**
+    /**
      * Handle the incoming request.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -20,12 +19,49 @@ class AddController extends Controller
     }
     public function index()
     {
-        return view('add',);
+       $car = Car::all()->toArray();
+       return view('data',compact('car'));
     }
-   /* public function create()
+    public function edit(Request $request, $id)
+    {
+        $car = Car::find($id);
+        return view('edit',compact('car','id'));
+
+    }
+    public function update(Request $request,$id)
+    {
+        $this->validate($request,[
+            'Brand'  =>  'required',
+            'Model'  =>  'required',
+            'Motorizare'  =>  'required',
+            'Locuri'  =>  'required',
+            'Consum'  =>  'required',
+            'Transmisie'  =>  'required',
+            'Putere'  =>  'required',
+            'An_aparitie'  =>  'required',
+            'Pret_de_baza'  =>  'required',
+            'Combustibil'  =>  'required',
+            'Caroserie'  =>  'required',
+            'Grad_de_poluare'  =>  'required',
+            'Tractiune'  =>  'required',
+            'Dotari_standard'  =>  'required',
+            'iMAGE'  =>  'required'
+        ]);
+        $car = Car::find($id);
+        $car->Brand = $request->get('Brand');
+        $car->Model = $request->get('Model');
+        $car->save();
+        return redirect()->intended('/edit')->with('success','Data updated');
+    }
+/*
+    public function show(Request $request, $id)
+    {
+
+    }
+    public function create()
     {
         return view('add',);
-    }*/
+    }
     public function store(Request $request)
     {
         $this->validate($request,[
@@ -63,6 +99,15 @@ class AddController extends Controller
             'iMAGE'  =>  $request->get('iMAGE')
         ]);
         $car->save();
-        return redirect()->intended('admin/add')->with('success','Data added successfully');
+        return redirect()->intended('/add')->with('success','Data added successfully');
+    }*/
+
+    public function destroy(  $id)
+    {//$id->delete();
+            $car = Car::find($id);
+            $car->delete();
+            return redirect()->intended('admin/data')->with('success','Data deleted');
     }
+
+
 }
