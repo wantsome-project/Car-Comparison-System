@@ -60,7 +60,7 @@ class AddController extends Controller
             'Grad_de_poluare'  =>  $request->get('Grad_de_poluare'),
             'Tractiune'  =>  $request->get('Tractiune'),
             'Dotari_standard'  =>  $request->get('Dotari_standard'),
-            'iMAGE'  =>  $request->get('iMAGE')
+            'iMAGE'  =>  $request->post('iMAGE')
         ]);
         $car->save();
         return redirect()->intended('admin/add')->with('success','Data added successfully');

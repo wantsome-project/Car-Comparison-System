@@ -19,6 +19,7 @@
    <tr>
     <th>Brand</th>
     <th>Model</th>
+    <th>Image</th>
     <th>Edit</th>
     <th>Delete</th>
    </tr>
@@ -26,6 +27,7 @@
    <tr>
     <td>{{$row['Brand']}}</td>
     <td>{{$row['Model']}}</td>
+    <td><img src="/images/{{ $row['iMAGE'] }}" height="90px" width="160px" /></td>
     <td><a href="{{action('DataController@edit', $row['id'])}}">Edit</a></td>
     <td>
         <form method="post" class="delete_form" action="{{action('DataController@destroy', $row['id'])}}">

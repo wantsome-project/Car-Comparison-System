@@ -4,8 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
-use App\Car;
-class DataController extends Controller
+use App\User;
+class UserController extends Controller
 {
     /**
      * Handle the incoming request.
@@ -19,58 +19,35 @@ class DataController extends Controller
     }
     public function index()
     {
-       $car = Car::all()->toArray();
-       return view('data',compact('car'));
+       $user = User::all()->toArray();
+       return view('permissions',compact('user'));
     }
+
     public function edit(Request $request, $id)
     {
-        $car = Car::find($id);
-        return view('edit',compact('car','id'));
+        $user = User::find($id);
+        return view('user_edit',compact('user','id'));
 
     }
+
     public function update(Request $request,$id)
-    {
-        $this->validate($request,[
-            'Brand'  =>  'required',
-            'Model'  =>  'required',
-            'Motorizare'  =>  'required',
-            'Locuri'  =>  'required',
-            'Consum'  =>  'required',
-            'Transmisie'  =>  'required',
-            'Putere'  =>  'required',
-            'An_aparitie'  =>  'required',
-            'Pret_de_baza'  =>  'required',
-            'Combustibil'  =>  'required',
-            'Caroserie'  =>  'required',
-            'Grad_de_poluare'  =>  'required',
-            'Tractiune'  =>  'required',
-            'Dotari_standard'  =>  'required',
-            'iMAGE'  =>  'required'
-        ]);
-        $car = Car::find($id);
-        $car->Brand = $request->get('Brand');
-        $car->Model = $request->get('Model');
-        $car->Motorizare = $request->get('Motorizare');
-        $car->Locuri = $request->get('Locuri');
-        $car->Consum = $request->get('Consum');
-        $car->Transmisie = $request->get('Transmisie');
-        $car->Putere = $request->get('Putere');
-        $car->An_aparitie = $request->get('An_aparitie');
-        $car->Pret_de_baza = $request->get('Pret_de_baza');
-        $car->Combustibil = $request->get('Combustibil');
-        $car->Caroserie = $request->get('Caroserie');
-        $car->Grad_de_poluare = $request->get('Grad_de_poluare');
-        $car->Tractiune = $request->get('Tractiune');
-        $car->Dotari_standard = $request->get('Dotari_standard');
-        $car->iMAGE = $request->get('iMAGE');
-        $car->save();
-        return redirect()->intended('admin/data/')->with('success','Data updated');
+    { $this->validate($request,[
+       'name'  =>  'required',
+       ]);
+
+        $user = User::find($id);
+        $user->name = $request->get('name');
+        $user->role_id = $request->input('role_id');
+        $user->save();
+        return redirect()->intended('super.admin/data')->with('success','Data updated');
     }
+
 
     public function show(Request $request, $id)
     {
-        return view('car', ['car' => Car::findOrFail($id)]);
+
     }
+
     /*public function create()
     {
         return view('add',);
@@ -117,10 +94,10 @@ class DataController extends Controller
 
     public function destroy($id)
     {
-            $car = Car::find($id);
-            $car->delete();
-            return redirect()->intended('admin/data')->with('success','Data deleted');
+            $user = User::find($id);
+            $user->delete();
+            return redirect()->intended('super.admin/data')->with('success','Data deleted');
     }
-
-
 }
+
+

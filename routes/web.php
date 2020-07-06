@@ -21,7 +21,7 @@ Route::get('/', function () {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
-
+Route::get('/home/{id}', 'DataController@show');
 
 Route::group([
     'middleware' => 'auth.role',
@@ -35,6 +35,19 @@ Route::group([
     Route::resource('add','AddController');
 
 });
+Route::group([
+    'middleware' => 'auth.role',
+    'prefix' => 'super.admin',
+    'role' => 'super.admin',
+],function (){
+    Route::get('/data', 'UserController@index');
+    Route::get('/data/{id}/edit','UserController@edit');
+    Route::put('/data/{id}','UserController@update');
+    Route::delete('/data/{id}/delete','UserController@destroy');
+
+
+});
+
 
 //Route::group([
   //  'middleware' => 'auth.role',

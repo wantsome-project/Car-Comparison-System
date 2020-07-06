@@ -65,13 +65,25 @@
    <div class="form-group">
    <input type="longtext" name="Dotari_standard" class="form-control" placeholder="Enter dotari standard" />
    </div>
-   <div class="form-group">
-   <input type="longtext" name="iMAGE" class="form-control" placeholder="Enter image location" />
+   <div  class="form-group">
+   <!--<input type="longtext" name="iMAGE" class="form-control" placeholder="Enter image location" />-->
+        <form action="/upload" method="post">
+            <input type="file" name="iMAGE"/>
+
+
    </div>
    <div class="form-group">
     <input type="submit" class="btn btn-primary" />
-   </div>
+   <!--</div>
   </form>
+    <div class="card-body">
+        <form action="/upload" method="post">
+            <input type="file" name="image"/>
+            <input type="submit" value="Upload"/>
+
+
+
+
  </div>
 </div>
 @endsection
