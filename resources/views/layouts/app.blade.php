@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -54,17 +55,60 @@
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
 
+
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+
+                                    <a class="dropdown-item" href="{{ route('home') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('home-comp').submit();">
+                                        {{ __('Home') }}
+                                    </a>
+
+                                   <?php
+                                   $user = Auth::user()->role_id;
+
+                                    if ($user == 1 || $user == 2)
+                                        {
+                                      ?>
+                                       <a class="dropdown-item" href="{{ route('Data') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('Database').submit();">
+                                        {{ __('Data') }}
+                                    </a>
+                                     <?php }
+
+                                    if ($user == 1 )
+                                        {
+                                      ?>
+                                       <a class="dropdown-item" href="{{ route('userdata') }}"
+                                       onclick="event.preventDefault();
+                                                     document.getElementById('UserDatabase').submit();">
+                                        {{ __('GivePermission') }}
+                                    </a>
+                                     <?php } ?>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
                                         {{ __('Logout') }}
                                     </a>
 
+
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                         @csrf
                                     </form>
-                                </div>
+
+                                    <form id="Database" action="{{ route('Data') }}" method="get" style="display: none;">
+                                    @csrf
+                                    </form>
+
+                                    <form id="UserDatabase" action="{{ route('userdata') }}" method="get" style="display: none;">
+                                    @csrf
+                                    </form>
+
+                                    <form id="home-comp" action="{{ route('home') }}" method="get" style="display: none;">
+                                        @csrf
+                                        </form>
                             </li>
                         @endguest
                     </ul>

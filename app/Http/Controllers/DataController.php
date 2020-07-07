@@ -1,9 +1,10 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
-
+use App\User;
+use App\Mail\NewCar;
 use App\Car;
 class DataController extends Controller
 {
@@ -29,7 +30,8 @@ class DataController extends Controller
 
     }
     public function update(Request $request,$id)
-    {
+    {   $user = User::All("email");
+         Mail::to($user)->send(new NewCar());
         $this->validate($request,[
             'Brand'  =>  'required',
             'Model'  =>  'required',

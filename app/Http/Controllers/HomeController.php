@@ -4,8 +4,11 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Car;
+use App\User;
 class HomeController extends Controller
 {
+
+
     /**
      * Create a new controller instance.
      *
@@ -25,4 +28,6 @@ class HomeController extends Controller
     {   $car = Car::all()->toArray();
         return view('home',compact('car'));
     }
+
 }
+

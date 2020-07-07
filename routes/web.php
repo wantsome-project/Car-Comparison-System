@@ -3,6 +3,10 @@
 use App\Http\Controllers\AddController;
 use App\Http\Controllers\DataController;
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewCar;
+use App\User;
+use PhpParser\Node\Expr\New_;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,29 +22,50 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+
+Route::get('/email', function () {
+    //$user = User::All("email");
+    //foreach($user as $send){
+    //Mail::to($send)->send(new NewCar());}
+    //Mail::to('emailtest@yahoo.ro')->send(new NewCar());
+    return new NewCar();
+});
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
 Route::get('/home/{id}', 'DataController@show');
+
+Route::get('/post/create', 'PostController@create')->name('post.create');
+Route::post('/post/store', 'PostController@store')->name('post.store');
+
+Route::get('/posts', 'PostController@index')->name('posts');
+Route::get('/post/show/{id}', 'PostController@show')->name('post.show');
+
+Route::post('/comment/store', 'CommentController@store')->name('comment.add');
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
+
 
 Route::group([
     'middleware' => 'auth.role',
     'prefix' => 'admin',
     'role' => 'admin',
 ],function (){
-    Route::get('/data', 'DataController@index');
+    Route::get('/data', 'DataController@index')->name('Data');
     Route::get('/data/{id}/edit','DataController@edit');
     Route::put('/data/{id}','DataController@update');
     Route::delete('/data/{id}/delete','DataController@destroy');
     Route::resource('add','AddController');
 
 });
+
 Route::group([
     'middleware' => 'auth.role',
     'prefix' => 'super.admin',
     'role' => 'super.admin',
 ],function (){
-    Route::get('/data', 'UserController@index');
+    Route::get('/data', 'UserController@index')->name('userdata');
     Route::get('/data/{id}/edit','UserController@edit');
     Route::put('/data/{id}','UserController@update');
     Route::delete('/data/{id}/delete','UserController@destroy');

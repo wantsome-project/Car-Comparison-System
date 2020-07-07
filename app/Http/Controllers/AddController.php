@@ -5,6 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Http\RedirectResponse;
 use App\Car;
+use Illuminate\Support\Facades\Mail;
+use App\Mail\NewCar;
+use App\User;
+use PhpParser\Node\Expr\New_;
 
 class AddController extends Controller
 {
@@ -27,7 +31,9 @@ class AddController extends Controller
         return view('add',);
     }*/
     public function store(Request $request)
-    {
+    {     $user = User::All("email");
+        foreach($user as $send){
+        Mail::to($send)->send(new NewCar());}
         $this->validate($request,[
             'Brand'  =>  'required',
             'Model'  =>  'required',

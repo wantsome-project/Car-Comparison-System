@@ -1,4 +1,4 @@
-@extends('master')
+@extends('layouts.app')
 
 @section('content')
 
@@ -20,6 +20,8 @@
     <td>{{$car['Model']}}</td>
     <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
     <td></td>
+
+    <a class="nav-link" href="{{ route('post.create') }}">Create Post</a>
    </tr>
   </table>
  </div>
