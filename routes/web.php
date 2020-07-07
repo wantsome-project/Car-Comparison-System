@@ -1,12 +1,12 @@
 <?php
 
-use App\Http\Controllers\AddController;
-use App\Http\Controllers\DataController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Mail;
 use App\Mail\NewCar;
+use Illuminate\Support\Facades\Auth;
 use App\User;
-use PhpParser\Node\Expr\New_;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -25,12 +25,15 @@ Route::get('/', function () {
 
 
 Route::get('/email', function () {
-    //$user = User::All("email");
-    //foreach($user as $send){
-    //Mail::to($send)->send(new NewCar());}
-    //Mail::to('emailtest@yahoo.ro')->send(new NewCar());
+    $user = User::All("email");
+    foreach($user as $send){
+    Mail::to($send)->send(new NewCar());}
+    Mail::to('emailtest@yahoo.ro')->send(new NewCar());
     return new NewCar();
 });
+Route::get('/sendemail', 'SendEmailController@index')->name('send.email');
+Route::post('/sendemail/send', 'SendEmailController@send');
+
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');

@@ -87,6 +87,12 @@
                                     </a>
                                      <?php } ?>
 
+                                     <a class="dropdown-item" href="{{ route('send.email') }}"
+                                     onclick="event.preventDefault();
+                                                   document.getElementById('send-email').submit();">
+                                      {{ __('Contact us') }}
+                                  </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -95,6 +101,10 @@
 
 
                                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                        @csrf
+                                    </form>
+
+                                    <form id="send-email" action="{{ route('send.email') }}" method="get" style="display: none;">
                                         @csrf
                                     </form>
 
