@@ -13,10 +13,55 @@
                             {{ session('status') }}
                         </div>
                     @endif
-
-                    You are logged in!
+                  Choose which Vehicle you want to compare
 <div class="row">
  <div class="col-md-12">
+
+
+
+
+
+    @foreach($car as $row)
+    <form action={{action('DataController@compare', $row['id'])}}>
+        <label for="cars">Choose a car:</label>
+        <select id="cars" name="cars">
+            @foreach($car  as $row)
+            <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
+          @endforeach
+
+        </select>
+        <input type="submit">
+      </form>@endforeach
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <select id="cars" name="cars">
+        @foreach($car  as $row)
+        <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
+        @endforeach
+      </select>
+      <select id="cars" name="cars">
+        @foreach($car  as $row)
+        <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
+        @endforeach
+      </select>
+      <button type="submit" class="btn btn-default pull-right">
+        Submit
+    </button></form>
+
   <br />
   <h3 align="center">Cars Data</h3>
   <br />

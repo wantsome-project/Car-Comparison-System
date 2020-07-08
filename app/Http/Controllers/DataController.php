@@ -143,4 +143,10 @@ class DataController extends Controller
         return back();
       }
 
+
+      public function compare( $id)
+      {
+          return view('comparison', ['car' => Car::findOrFail($id)]);
+      }
+
 }

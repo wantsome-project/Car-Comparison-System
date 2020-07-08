@@ -2,7 +2,7 @@
 
 @section('content')
 
-<div class="row">
+<div class="column">
  <div class="col-md-12">
   <br />
   <h3 align="center">Car Data</h3>
@@ -20,9 +20,12 @@
     <td>{{$car['Model']}}</td>
     <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
     <td></td>
-</tr>
-</table>
-
+   </tr>
+  </table>
+ </div>
+</div>
+<div class="card">
+    <div class="card-body">
     <?php
     $cars= $car->id;?>
     <?php $reviews = DB::table('reviews')->get();?>
@@ -59,8 +62,6 @@
       </button>
   </form>
 </div>
-
- </div>
 </div>
 
 @endsection

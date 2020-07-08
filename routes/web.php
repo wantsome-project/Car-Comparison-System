@@ -37,6 +37,7 @@ Route::post('/home/{id}', array('before'=>'csrf', function($id)
 }));
 
 Route::post('addReview', 'DataController@addReview');
+route::get('comparison/{id}','DataController@compare');
 
 Route::get('/sendemail', 'SendEmailController@index')->name('send.email');
 Route::post('/sendemail/send', 'SendEmailController@send');
