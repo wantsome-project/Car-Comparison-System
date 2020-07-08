@@ -1,5 +1,9 @@
 @extends('layouts.app')
-
+<?php
+ use App\User;
+ use App\Car;
+ use App\Mail\NewCar;
+?>
 @section('content')
 <div class="row">
  <div class="col-md-12">
@@ -16,6 +20,11 @@
   </div>
   @endif
   @if(\Session::has('success'))
+  <?php
+
+  $user = User::All("email");
+        foreach($user as $send){
+        Mail::to($send)->send(new NewCar());}?>
   <div class="alert alert-success">
    <p>{{ \Session::get('success') }}</p>
   </div>

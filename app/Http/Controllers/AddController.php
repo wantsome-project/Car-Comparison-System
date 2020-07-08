@@ -31,9 +31,9 @@ class AddController extends Controller
         return view('add',);
     }*/
     public function store(Request $request)
-    {     $user = User::All("email");
-        foreach($user as $send){
-        Mail::to($send)->send(new NewCar());}
+    {   //  $user = User::All("email");
+        //foreach($user as $send){
+       // Mail::to($send)->send(new NewCar());}
         $this->validate($request,[
             'Brand'  =>  'required',
             'Model'  =>  'required',
