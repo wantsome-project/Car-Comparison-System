@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-
+@section('tabel')
 @foreach($car as $car)
    <table class="table table-bordered table-striped" style="width:50%; float:left">
     <tr>
         <th>Image</th>
-        <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
+        <td><img src="/images/{{ $car['iMAGE'] }}" height="135px" width="240px" /></td>
         <td></td>
        </tr>
     <tr>
@@ -63,14 +63,14 @@
        </table>
       @endforeach
 
-
+      @endsection
 
 @section('content')
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card">
-                   <div class="card-header">Dashboard</div>
+                   <div class="card-header">Pagina de comparat</div>
 
                         <div class="card-body">
                            @if (session('status'))
@@ -80,7 +80,7 @@
                            @endif
                           <div class="content">
                             <div class="title m-b-md">
-                               <h3> Here are the two vehicle you choose: </h3>
+                               <h3> Aici puteti compara masinile alese: </h3>
                             </div>
                           </div>
                         </div>
