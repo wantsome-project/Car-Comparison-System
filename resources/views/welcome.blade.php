@@ -22,8 +22,8 @@
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
                 height: 20%;
-                margin-right: 300px;
-                margin-left: 300px;
+                margin-right: 27%;
+                margin-left: 27%;
                 margin-bottom: 0;
                 margin-top: 0;
 
