@@ -11,13 +11,22 @@
 
         <!-- Styles -->
         <style>
-            html, body {
-                background-color: #fff;
+            html{background:url('Images/1.jpg') no-repeat center center fixed;
+        -webkit -background-size:cover;
+        -moz -background-size:cover;
+        -o - background-size:cover
+        background-size:cover;}
+             body {
+                background-color: lightblue;
                 color: #636b6f;
                 font-family: 'Nunito', sans-serif;
                 font-weight: 200;
-                height: 100vh;
-                margin: 0;
+                height: 20%;
+                margin-right: 300px;
+                margin-left: 300px;
+                margin-bottom: 0;
+                margin-top: 0;
+
             }
 
             .full-height {
@@ -64,9 +73,9 @@
         </style>
     </head>
     <body>
-        <div class="flex-center position-ref full-height">
+        <div class="flex-center ">
             @if (Route::has('login'))
-                <div class="top-right links">
+                <div class="mid links">
                     @auth
                         <a href="{{ url('/home') }}">Home</a>
                     @else
@@ -78,23 +87,27 @@
                     @endauth
                 </div>
             @endif
-
+        </div>
             <div class="content">
                 <div class="title m-b-md">
+                    <link href="https://fonts.googleapis.com/css?family=Nunito:200,600" rel="stylesheet">
                     Car Advisor
                 </div>
 
-              <!--  <div class="links">
-                    <a href="https://laravel.com/docs">Docs</a>
-                    <a href="https://laracasts.com">Laracasts</a>
-                    <a href="https://laravel-news.com">News</a>
-                    <a href="https://blog.laravel.com">Blog</a>
-                    <a href="https://nova.laravel.com">Nova</a>
-                    <a href="https://forge.laravel.com">Forge</a>
-                    <a href="https://vapor.laravel.com">Vapor</a>
-                    <a href="https://github.com/laravel/laravel">GitHub</a>
-                </div>-->
+                <div class="links">
+
+                </div>
             </div>
-        </div>
+
+
+
+
+
     </body>
+
+
+
+
+
 </html>
+
