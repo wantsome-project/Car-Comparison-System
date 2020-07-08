@@ -100,9 +100,9 @@
           <textarea style="width:30%;padding:2%;height:150px;font:36px/44px ">{{$review->comment}}</textarea></ul>
 
          <?php }?>
-  <div><hr style="height:2px;border-width:0;color:gray;background-color:gray">
+  <div>
    @endforeach</div></div></div>
-   <hr>
+   <hr style="height:2px;border-width:0;color:gray;background-color:gray">
    <p><b>Scrieti o recenzie </b></p>
 
    <form action="{{url('/addReview')}}" method="post">
