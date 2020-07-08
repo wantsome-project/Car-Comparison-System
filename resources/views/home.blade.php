@@ -22,7 +22,7 @@
 
 
     @foreach($car as $row)
-    <form action={{action('DataController@compare', $row['id'])}}>
+    <form action={{action('DataController@compare', $row['id'])}}>@endforeach
         <div class="form-group">
            </div>
         <label for="car">Choose a car:</label>
@@ -40,7 +40,7 @@
 
         </select>
         <input type="submit">
-      </form>@endforeach
+      </form>
 
     </form>
 

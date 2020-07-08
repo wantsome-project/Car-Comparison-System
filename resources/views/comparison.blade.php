@@ -26,9 +26,9 @@
         </tr>
 
         <tr>
-         <td>{{$car['Brand']}}</td>
-         <td>{{$car['Model']}}</td>
-         <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
+         <td>{{$car1['Brand']}}</td>
+         <td>{{$car1['Model']}}</td>
+         <td><img src="/images/{{ $car1['iMAGE'] }}" height="90px" width="160px" /></td>
          <td></td>
         </tr>
        </table>
@@ -42,9 +42,9 @@
         </tr>
 
         <tr>
-         <td>{{$car['Brand']}}</td>
-         <td>{{$car['Model']}}</td>
-         <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
+         <td>{{$car1['Brand']}}</td>
+         <td>{{$car1['Model']}}</td>
+         <td><img src="/images/{{ $car1['iMAGE'] }}" height="90px" width="160px" /></td>
          <td></td>
         </tr>
        </table>

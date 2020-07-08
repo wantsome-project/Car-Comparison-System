@@ -150,7 +150,7 @@ class DataController extends Controller
         $car=Car::findOrFail($car2);
         $car4=Car::findOrFail($car3);
         echo $car3;
-          return view('comparison')->with('car',$car);
+          return view('comparison')->with('car1',$car);
       }
 
 }
