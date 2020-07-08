@@ -37,21 +37,15 @@ class Review extends Model
     {
       return $query->where('spam', false);
     }
-    /*public function getTimeagoAttribute()
-{
-  $date = CarbonCarbon::createFromTimeStamp(strtotime($this->created_at))->diffForHumans();
-  return $date;
-}*/
+
 public function storeReviewForProduct($id, $comment, $rating)
      {
     $car = Car::find($id);
 
-    //$this->user_id = Auth::user()->id;
     $this->comment = $comment;
     $this->rating = $rating;
     $car->reviews()->save($this);
 
-    // recalculate ratings for the specified product
-    $car->recalculateRating($rating);
+
      }
 }

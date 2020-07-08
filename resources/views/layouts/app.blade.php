@@ -129,6 +129,9 @@
         <main class="py-4">
             @yield('content')
         </main>
+        <main class="py-4">
+            @yield('tabel')
+        </main>
     </div>
 </body>
 </html>

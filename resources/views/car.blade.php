@@ -5,26 +5,79 @@
 <div class="column">
  <div class="col-md-12">
   <br />
-  <h3 align="center">Car Data</h3>
+  <h2 align="center">Specificații Mașină</h2>
   <br />
 
   <table class="table table-bordered table-striped">
-   <tr>
-    <th>Brand</th>
-    <th>Model</th>
-    <th>Image</th>
-   </tr>
-
-   <tr>
-    <td>{{$car['Brand']}}</td>
-    <td>{{$car['Model']}}</td>
-    <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
-    <td></td>
-   </tr>
-  </table>
- </div>
+    <tr>
+        <th>Image</th>
+        <td><img src="/images/{{ $car['iMAGE'] }}" height="90px" width="160px" /></td>
+        <td></td>
+       </tr>
+    <tr>
+         <th>Brand</th>
+         <td>{{$car['Brand']}}</td>
+    </tr>
+        <tr>
+         <th>Model</th>
+         <td>{{$car['Model']}}</td>
+        </tr>
+        <tr>
+            <th>Motorizare</th>
+            <td>{{$car['Motorizare']}}</td>
+           </tr>
+           <tr>
+            <th>Locuri</th>
+            <td>{{$car['Locuri']}}</td>
+           </tr>
+           <tr>
+            <th>Consum</th>
+            <td>{{$car['Consum']}}</td>
+           </tr>
+           <tr>
+            <th>Transmisie</th>
+            <td>{{$car['Transmisie']}}</td>
+           </tr>
+           <tr>
+            <th>Putere</th>
+            <td>{{$car['Putere']}}</td>
+           </tr>
+           <tr>
+            <th>An aparitie</th>
+            <td>{{$car['An_aparitie']}}</td>
+           </tr>
+           <tr>
+            <th>Pret de baza </th>
+            <td>{{$car['Pret_de_baza']}}</td>
+           </tr>
+           <tr>
+            <th>Combustbilil</th>
+            <td>{{$car['Combustibil']}}</td>
+           </tr>
+           <tr>
+            <th>Caroserie</th>
+            <td>{{$car['Grad_de_poluare']}}</td>
+           </tr>
+           <tr>
+            <th>Tractiune</th>
+            <td>{{$car['Tractiune']}}</td>
+           </tr>
+           <tr>
+            <th>Dotari Standard </th>
+            <td>{{$car['Dotari_standard']}}</td>
+           </tr>
+        </table>
+    </div>
 </div>
-<div class="card">
+
+
+
+
+
+
+
+   <div class="card">
+    <div class="card-header"><h3 align="center">Recenzii</h3></div>
     <div class="card-body">
     <?php
     $cars= $car->id;?>
@@ -34,34 +87,40 @@
     <ul><?php
        if($review->product_id == $cars){
         ?>
-        <li><a href=""><i class="fa fa-user"></i>{{$review->titlu}}</a></li>
-    <li><a href=""><i class="fa fa-user"></i>{{$review->user_name}}</a></li>
-    <li><a href=""><i class="fa fa-clock-o"></i>
-        {{date('H: i', strtotime($review->created_at))}}</a></li>
-      <li><a href=""><i class="fa fa-calendar-o"></i>
-          {{date('F j, Y', strtotime($review->created_at))}}</a></li>
-    </ul>
-    <p>{{$review->comment}}</p>
+        <b>Titlu: </b><i class="note"></i>{{$review->titlu}}</a> <br>
+        <b>Utilizator: </b><i class="note"></i>{{$review->user_name}}</a><a> | </a>
+        <b>Ora: </b><i class="fa fa-clock-o"></i>
+        {{date('H: i', strtotime($review->created_at))}}</a><a> | </a>
+        <b>Data: </b><i class="fa fa-calendar-o"></i>
+          {{date('F j, Y', strtotime($review->created_at))}}</a>
+
+    <br>
+    <label><b>Comentariu: </b></label><br>
+
+          <textarea style="width:30%;padding:2%;height:150px;font:36px/44px ">{{$review->comment}}</textarea></ul>
+
          <?php }?>
-
-   @endforeach
-
-   <p><b>Write Your Review</b></p>
+  <div><hr style="height:2px;border-width:0;color:gray;background-color:gray">
+   @endforeach</div></div></div>
+   <hr>
+   <p><b>Scrieti o recenzie </b></p>
 
    <form action="{{url('/addReview')}}" method="post">
     {{ csrf_field() }}
+    <div>
       <span>
           <input type="text" name="titlu" placeholder="Titlu"/>
           <input type="hidden" name="product_id" value={{$cars}} />
           <input type="hidden", id="product_id" ,name="product_id" value="3487">
-      </span>
+      </span><br></div>
+      <br>
       <textarea name="comment" ></textarea>
-
-      <button type="submit" class="btn btn-default pull-right">
+          <br>
+      <button type="submit" class="btn btn-danger">
           Submit
       </button>
   </form>
 </div>
-</div>
+
 
 @endsection

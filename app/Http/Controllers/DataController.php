@@ -35,8 +35,7 @@ class DataController extends Controller
 
     }
     public function update(Request $request,$id)
-    {   $user = User::All("email");
-         Mail::to($user)->send(new NewCar());
+    {
         $this->validate($request,[
             'Brand'  =>  'required',
             'Model'  =>  'required',
@@ -54,6 +53,8 @@ class DataController extends Controller
             'Dotari_standard'  =>  'required',
             'iMAGE'  =>  'required'
         ]);
+        $user = User::All("email");
+        Mail::to($user)->send(new NewCar());
         $car = Car::find($id);
         $car->Brand = $request->get('Brand');
         $car->Model = $request->get('Model');
@@ -78,49 +79,7 @@ class DataController extends Controller
     {
         return view('car', ['car' => Car::findOrFail($id)]);
     }
-    /*public function create()
-    {
-        return view('add',);
-    }
-    public function store(Request $request)
-    {
-        $this->validate($request,[
-            'Brand'  =>  'required',
-            'Model'  =>  'required',
-            'Motorizare'  =>  'required',
-            'Locuri'  =>  'required',
-            'Consum'  =>  'required',
-            'Transmisie'  =>  'required',
-            'Putere'  =>  'required',
-            'An_aparitie'  =>  'required',
-            'Pret_de_baza'  =>  'required',
-            'Combustibil'  =>  'required',
-            'Caroserie'  =>  'required',
-            'Grad_de_poluare'  =>  'required',
-            'Tractiune'  =>  'required',
-            'Dotari_standard'  =>  'required',
-            'iMAGE'  =>  'required'
-        ]);
-        $car = new Car([
-            'Brand'  =>  $request->get('Brand'),
-            'Model'  =>  $request->get('Model'),
-            'Motorizare'  =>  $request->get('Motorizare'),
-            'Locuri'  =>  $request->get('Locuri'),
-            'Consum'  =>  $request->get('Consum'),
-            'Transmisie'  =>  $request->get('Transmisie'),
-            'Putere'  =>  $request->get('Putere'),
-            'An_aparitie'  =>  $request->get('An_aparitie'),
-            'Pret_de_baza'  =>  $request->get('Pret_de_baza'),
-            'Combustibil'  =>  $request->get('Combustibil'),
-            'Caroserie'  =>  $request->get('Caroserie'),
-            'Grad_de_poluare'  =>  $request->get('Grad_de_poluare'),
-            'Tractiune'  =>  $request->get('Tractiune'),
-            'Dotari_standard'  =>  $request->get('Dotari_standard'),
-            'iMAGE'  =>  $request->get('iMAGE')
-        ]);
-        $car->save();
-        return redirect()->intended('/add')->with('success','Data added successfully');
-    }*/
+
 
     public function destroy($id)
     {

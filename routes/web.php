@@ -48,15 +48,6 @@ Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/home/{id}', 'DataController@show');
 
-Route::get('/post/create', 'PostController@create')->name('post.create');
-Route::post('/post/store', 'PostController@store')->name('post.store');
-
-Route::get('/posts', 'PostController@index')->name('posts');
-Route::get('/post/show/{id}', 'PostController@show')->name('post.show');
-
-Route::post('/comment/store', 'CommentController@store')->name('comment.add');
-Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
-
 
 Route::group([
     'middleware' => 'auth.role',
@@ -84,31 +75,3 @@ Route::group([
 
 });
 
-
-//Route::group([
-  //  'middleware' => 'auth.role',
-   // 'role' => 'superadmin',
-//],function (){
-//    Route::get('/cars/{id}/edit', 'ProductController@edit');
-//php artisan route:list});
-
-
-//Route::resource('/add', 'AddController');
-/*
-Route::get('/products', 'ProductsController@index');
-Route::get('/products/{productId}', 'ProductsController@show');
-Route::get('/products/create', 'ProductsController@create');
-Route::post('/products', 'ProductsController@store');
-Route::get('/products/{productId}/edit', 'ProductsController@edit');
-Route::get('/products/{productId}', 'ProductsController@update');
-Route::delete('/products/{productId}', 'ProductsController@destroy');
-
-Route::get('/products/{productId}/feedback/create', 'FeedbackController@create');*/
-//Route::post('/products/{productId}/feedback', 'FeedbackController@store');
-
-//get /products ProductsController@index
-//get /products/{productId} ProductsController@show
-//get /products/create ProductsController@create
-//post /products ProductsController@store
-//get  /products/{productId}/edit ProductsController@edit
-//put /products/{productId} ProductsController@update
