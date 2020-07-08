@@ -144,9 +144,13 @@ class DataController extends Controller
       }
 
 
-      public function compare( $id)
-      {
-          return view('comparison', ['car' => Car::findOrFail($id)]);
+      public function compare(Request $request )
+      {    $car2=$request->car ;
+           $car3=$request->car1;
+        $car=Car::findOrFail($car2);
+        $car4=Car::findOrFail($car3);
+        echo $car3;
+          return view('comparison')->with('car',$car);
       }
 
 }

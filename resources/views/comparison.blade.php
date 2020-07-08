@@ -18,7 +18,7 @@
  <div class="col-md-12">
 
 
-    <table class="table table-bordered table-striped">
+   <table class="table table-bordered table-striped">
         <tr>
          <th>Brand</th>
          <th>Model</th>

@@ -23,8 +23,17 @@
 
     @foreach($car as $row)
     <form action={{action('DataController@compare', $row['id'])}}>
-        <label for="cars">Choose a car:</label>
-        <select id="cars" name="cars">
+        <div class="form-group">
+           </div>
+        <label for="car">Choose a car:</label>
+
+        <select id="car" name="car">
+            @foreach($car  as $row)
+            <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
+          @endforeach
+
+        </select>
+          <select id="car1" name="car1">
             @foreach($car  as $row)
             <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
           @endforeach
@@ -33,34 +42,7 @@
         <input type="submit">
       </form>@endforeach
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    <select id="cars" name="cars">
-        @foreach($car  as $row)
-        <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
-        @endforeach
-      </select>
-      <select id="cars" name="cars">
-        @foreach($car  as $row)
-        <option value={{$row['id']}}>{{$row['Brand']}} {{$row['Model']}}</option>
-        @endforeach
-      </select>
-      <button type="submit" class="btn btn-default pull-right">
-        Submit
-    </button></form>
+    </form>
 
   <br />
   <h3 align="center">Cars Data</h3>
