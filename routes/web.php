@@ -31,6 +31,13 @@ Route::get('/email', function () {
     Mail::to('emailtest@yahoo.ro')->send(new NewCar());
     return new NewCar();
 });
+Route::post('/home/{id}', array('before'=>'csrf', function($id)
+{
+  return 'Review submitted for product '.$id;
+}));
+
+Route::post('addReview', 'DataController@addReview');
+
 Route::get('/sendemail', 'SendEmailController@index')->name('send.email');
 Route::post('/sendemail/send', 'SendEmailController@send');
 

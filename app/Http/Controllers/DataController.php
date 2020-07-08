@@ -6,6 +6,11 @@ use Illuminate\Http\Request;
 use App\User;
 use App\Mail\NewCar;
 use App\Car;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Input;
+
+
 class DataController extends Controller
 {
     /**
@@ -69,7 +74,7 @@ class DataController extends Controller
         return redirect()->intended('admin/data/')->with('success','Data updated');
     }
 
-    public function show(Request $request, $id)
+    public function show( $id)
     {
         return view('car', ['car' => Car::findOrFail($id)]);
     }
@@ -123,6 +128,19 @@ class DataController extends Controller
             $car->delete();
             return redirect()->intended('admin/data')->with('success','Data deleted');
     }
+    public function addReview(Request $request){
 
+        $user = Auth::user()->id;
+        $user_name = Auth::user()->name;
+        DB::table('reviews')->insert(
+      ['user_id' => $user,
+      'user_name' => $user_name,
+        'product_id' => $request->product_id,
+        'titlu' => $request->titlu ,
+      'comment' => $request->comment,
+    'created_at' => date("Y-m-d H:i:s"),'updated_at' =>date("Y-m-d H:i:s")]
+        );
+        return back();
+      }
 
 }
