@@ -24,14 +24,8 @@ class SendMail extends Mailable
     {
         $this->data = $data;
     }
-
-    /**
-     * Build the message.
-     *
-     * @return $this
-     */
     public function build()
     {  $user = Auth::user()->email;
-        return $this->from($user)->subject('New Customer Equiry')->view('emails.email_content')->with('data', $this->data);
+        return $this->from($user)->subject('New Customer Equiry')->markdown('emails.email_content')->with('data', $this->data);
     }
 }
